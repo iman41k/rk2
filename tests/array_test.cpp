@@ -1,39 +1,42 @@
 #include <gtest/gtest.h>
 #include "../CrappyArrayInventory.h"
 
-TEST(CrappyArrayInventoryTest, AddItem) {
+// Тест 1: Проверка инициализации инвентаря и корректности добавленных предметов.
+TEST(CrappyArrayInventoryTest, InitializationTest) {
     CrappyArrayInventory inventory;
-    Item sword{"Sword", 100};
-    Item shield{"Shield", 50};
-    
-    inventory.addItem(sword);
-    inventory.addItem(shield);
-    
-    ASSERT_EQ(inventory.getItemCount(), 2);  // Проверяем, что количество предметов в инвентаре равно 2
+
+    Item* items = inventory.getInventory();
+    ASSERT_NE(items, nullptr);  // Проверяем, что массив предметов не нулевой.
+
+    EXPECT_EQ(items[0].name, "Sword");
+    EXPECT_EQ(items[0].value, 100);
+
+    EXPECT_EQ(items[1].name, "Shield");
+    EXPECT_EQ(items[1].value, 50);
 }
 
-TEST(CrappyArrayInventoryTest, RemoveItem) {
+// Тест 2: Проверка корректности возвращаемого размера инвентаря.
+TEST(CrappyArrayInventoryTest, InventorySizeTest) {
     CrappyArrayInventory inventory;
-    Item sword{"Sword", 100};
-    
-    inventory.addItem(sword);
-    inventory.removeItem(sword);
-    
-    ASSERT_EQ(inventory.getItemCount(), 0);  // Проверяем, что после удаления предмета количество предметов в инвентаре равно 0
+    EXPECT_EQ(inventory.getInventorySize(), 2);
 }
 
-TEST(CrappyArrayInventoryTest, GetTotalValue) {
+// Тест 3: Проверка того, что инвентарь содержит ожидаемые предметы.
+TEST(CrappyArrayInventoryTest, InventoryContentTest) {
     CrappyArrayInventory inventory;
-    Item sword{"Sword", 100};
-    Item shield{"Shield", 50};
-    
-    inventory.addItem(sword);
-    inventory.addItem(shield);
-    
-    ASSERT_EQ(inventory.getTotalValue(), 150);  // Проверяем, что суммарная стоимость предметов в инвентаре равна 150
+
+    Item* items = inventory.getInventory();
+
+    // Проверяем первый предмет.
+    ASSERT_EQ(items[0].name, "Sword");
+    EXPECT_EQ(items[0].value, 100);
+
+    // Проверяем второй предмет.
+    ASSERT_EQ(items[1].name, "Shield");
+    EXPECT_EQ(items[1].value, 50);
 }
 
-int main(int argc, char* argv) {
+int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
