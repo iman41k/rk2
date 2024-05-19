@@ -28,11 +28,11 @@ TEST(CrappyArrayInventoryTest, InventoryContentTest) {
     Item* items = inventory.getInventory();
 
     // Проверяем первый предмет.
-    ASSERT_STREQ(items[0].name.c_str(), "Sword");
+    ASSERT_EQ(items[0].name, "Sword");
     EXPECT_EQ(items[0].value, 100);
 
     // Проверяем второй предмет.
-    ASSERT_STREQ(items[1].name.c_str(), "Shield");
+    ASSERT_EQ(items[1].name, "Shield");
     EXPECT_EQ(items[1].value, 50);
 }
 
