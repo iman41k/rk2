@@ -1,20 +1,22 @@
-cmake_minimum_required(VERSION 3.10)
-project(omegaladon)
+# Include FetchContent module
+include(FetchContent)
 
-# Указываем стандарт C++
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+# Download and unpack GoogleTest at configure time
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/release-1.11.0.zip
+)
+# Make available Googletest
+FetchContent_MakeAvailable(googletest)
 
-# Добавляем тестовые исходные файлы
-set(TEST_SOURCE_FILES
+# Add test source files
+set(TEST_SOURCES
     array_test.cpp
 )
 
-# Создаем исполняемый файл для тестов
-add_executable(omgealadon ${TEST_SOURCE_FILES})
+# Link GoogleTest to the tests
+add_executable(runTests ${TEST_SOURCES})
+target_link_libraries(runTests gtest gtest_main)
 
-# Линкуем тесты с библиотекой и Google Test
-target_link_libraries(omegaladon PRIVATE omegaladonLib gtest gtest_main)
-
-# Включаем тестирование
-enable_testing()
+# Register tests
+add_test(NAME runTests COMMAND runTests)
