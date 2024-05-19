@@ -3,8 +3,8 @@
 
 TEST(CrappyArrayInventoryTest, AddItem) {
     CrappyArrayInventory inventory;
-    Item sword("Sword", 100);
-    Item shield("Shield", 50);
+    Item sword{"Sword", 100};
+    Item shield{"Shield", 50};
     
     inventory.addItem(sword);
     inventory.addItem(shield);
@@ -14,7 +14,7 @@ TEST(CrappyArrayInventoryTest, AddItem) {
 
 TEST(CrappyArrayInventoryTest, RemoveItem) {
     CrappyArrayInventory inventory;
-    Item sword("Sword", 100);
+    Item sword{"Sword", 100};
     
     inventory.addItem(sword);
     inventory.removeItem(sword);
@@ -24,8 +24,8 @@ TEST(CrappyArrayInventoryTest, RemoveItem) {
 
 TEST(CrappyArrayInventoryTest, GetTotalValue) {
     CrappyArrayInventory inventory;
-    Item sword("Sword", 100);
-    Item shield("Shield", 50);
+    Item sword{"Sword", 100};
+    Item shield{"Shield", 50};
     
     inventory.addItem(sword);
     inventory.addItem(shield);
