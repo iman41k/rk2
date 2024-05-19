@@ -9,12 +9,13 @@ CrappyArrayInventory::CrappyArrayInventory()
     item->name = "Sword";
     item->value = 100;
     array[0] = *item;
+    delete item;
 
     item = new Item();
     item->name = "Shield";
     item->value = 50;
     array[1] = *item;
-
+    delete item;
     this->items = array;
 }
 
