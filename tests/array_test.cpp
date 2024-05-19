@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include "CrappyArrayInventory.h"
 
 // Тест 1: Проверка инициализации инвентаря и корректности добавленных предметов.
 TEST(CrappyArrayInventoryTest, InitializationTest) {
