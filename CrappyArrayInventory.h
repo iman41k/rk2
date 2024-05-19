@@ -1,22 +1,22 @@
-#ifndef _CRAPPYARRAYINVENTORY_H_
-#define _CRAPPYARRAYINVENTORY_H_
+#ifndef CRAPPYARRAYINVENTORY_H
+#define CRAPPYARRAYINVENTORY_H
 
 #include <string>
 
-struct Item 
-{
-	std::string name;
-	int value;
-};
-
-class CrappyArrayInventory 
-{
+class Item {
 public:
-	CrappyArrayInventory();
-	Item* getInventory();
-	int getInventorySize();
-private:
-	Item* items;
+    std::string name;
+    int value;
 };
 
-#endif /* _CRAPPYARRAYINVENTORY_H_ */
+class CrappyArrayInventory {
+public:
+    CrappyArrayInventory();
+    Item* getInventory();
+    int getInventorySize();
+
+private:
+    Item* items;
+};
+
+#endif // CRAPPYARRAYINVENTORY_H
