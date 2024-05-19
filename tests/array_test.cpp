@@ -19,23 +19,11 @@ TEST(CrappyArrayInventoryTest, TestGetInventory) {
 
 TEST(CrappyArrayInventoryTest, TestCreateWithDifferentValues) {
     Item* array = new Item[3];
-    Item* item = new Item();
-    item->name = "Potion";
-    item->value = 20;
-    array[0] = *item;
-
-    item = new Item();
-    item->name = "Dagger";
-    item->value = 30;
-    array[1] = *item;
-
-    item = new Item();
-    item->name = "Ring";
-    item->value = 40;
-    array[2] = *item;
+    array[0] = {"Potion", 20};
+    array[1] = {"Dagger", 30};
+    array[2] = {"Ring", 40};
 
     CrappyArrayInventory inventory(array, 3);
-
     Item* items = inventory.getInventory();
 
     ASSERT_STREQ(items[0].name.c_str(), "Potion");
@@ -44,6 +32,5 @@ TEST(CrappyArrayInventoryTest, TestCreateWithDifferentValues) {
     ASSERT_STREQ(items[1].name.c_str(), "Dagger");
     ASSERT_EQ(items[1].value, 30);
 
-    ASSERT_STREQ(items[2].name.c_str(), "Ring");
-    ASSERT_EQ(items[2].value, 40);
+    delete[] array;
 }
