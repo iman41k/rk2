@@ -11,3 +11,8 @@ set(SOURCE_FILES
 
 add_executable(BuilderDesignPattern ${SOURCE_FILES})
 target_include_directories(BuilderDesignPattern PUBLIC ${PROJECT_SOURCE_DIR})
+
+
+enable_testing()
+
+add_subdirectory(tests)
