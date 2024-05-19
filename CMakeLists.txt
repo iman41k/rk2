@@ -12,6 +12,10 @@ set(SOURCE_FILES
 add_executable(BuilderDesignPattern ${SOURCE_FILES})
 target_include_directories(BuilderDesignPattern PUBLIC ${PROJECT_SOURCE_DIR})
 
+# Создаем библиотеку
+add_library(omegaladonLib ${LIB_SOURCE_FILES})
+target_include_directories(omegaladonLib PUBLIC include)
+
 # Добавляем Google Test с использованием FetchContent
 include(FetchContent)
 FetchContent_Declare(
