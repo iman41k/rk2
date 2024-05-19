@@ -1,30 +1,39 @@
 #include <gtest/gtest.h>
 #include "../CrappyArrayInventory.h"
 
-// Тест для проверки корректного создания инвентаря
-TEST(CrappyArrayInventoryTest, CreateInventory) {
+TEST(CrappyArrayInventoryTest, AddItem) {
     CrappyArrayInventory inventory;
-    Item* items = inventory.getInventory();
-    ASSERT_NE(items, nullptr); // Проверяем, что инвентарь был создан
+    Item sword("Sword", 100);
+    Item shield("Shield", 50);
+    
+    inventory.addItem(sword);
+    inventory.addItem(shield);
+    
+    ASSERT_EQ(inventory.getItemCount(), 2);  // Проверяем, что количество предметов в инвентаре равно 2
 }
 
-// Тест для проверки правильности элементов в инвентаре
-TEST(CrappyArrayInventoryTest, InventoryItems) {
+TEST(CrappyArrayInventoryTest, RemoveItem) {
     CrappyArrayInventory inventory;
-    Item* items = inventory.getInventory();
-    ASSERT_EQ(items[0].name, "Sword");
-    ASSERT_EQ(items[0].value, 100);
-    ASSERT_EQ(items[1].name, "Shield");
-    ASSERT_EQ(items[1].value, 50);
+    Item sword("Sword", 100);
+    
+    inventory.addItem(sword);
+    inventory.removeItem(sword);
+    
+    ASSERT_EQ(inventory.getItemCount(), 0);  // Проверяем, что после удаления предмета количество предметов в инвентаре равно 0
 }
 
-// Тест для проверки размера инвентаря
-TEST(CrappyArrayInventoryTest, InventorySize) {
+TEST(CrappyArrayInventoryTest, GetTotalValue) {
     CrappyArrayInventory inventory;
-    ASSERT_EQ(inventory.getInventorySize(), 2);
+    Item sword("Sword", 100);
+    Item shield("Shield", 50);
+    
+    inventory.addItem(sword);
+    inventory.addItem(shield);
+    
+    ASSERT_EQ(inventory.getTotalValue(), 150);  // Проверяем, что суммарная стоимость предметов в инвентаре равна 150
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char* argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
