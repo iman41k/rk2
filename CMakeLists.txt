@@ -9,8 +9,8 @@ set(SOURCE_FILES
     ModernInventory.cpp
 )
 
-add_executable(BuilderDesignPattern ${SOURCE_FILES})
-target_include_directories(BuilderDesignPattern PUBLIC ${PROJECT_SOURCE_DIR})
+add_executable(AdapterExample ${SOURCE_FILES})
+target_include_directories(AdapterExample PUBLIC ${PROJECT_SOURCE_DIR})
 
 
 enable_testing()
