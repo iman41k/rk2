@@ -10,6 +10,7 @@ set(SOURCE_FILES
 )
 
 add_executable(AdapterExample ${SOURCE_FILES})
+include_directories(${PROJECT_SOURCE_DIR}/include)
 target_include_directories(AdapterExample PUBLIC ${PROJECT_SOURCE_DIR})
 
 
