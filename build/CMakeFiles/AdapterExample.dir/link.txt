@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/AdapterExample.dir/main.cpp.o CMakeFiles/AdapterExample.dir/CrappyArrayInventory.cpp.o CMakeFiles/AdapterExample.dir/ModernInventory.cpp.o -o AdapterExample 
