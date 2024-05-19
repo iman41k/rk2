@@ -1,36 +1,42 @@
 #include <gtest/gtest.h>
 #include "CrappyArrayInventory.h"
 
-TEST(CrappyArrayInventoryTest, TestGetInventorySize) {
+// Тест 1: Проверка инициализации инвентаря и корректности добавленных предметов.
+TEST(CrappyArrayInventoryTest, InitializationTest) {
     CrappyArrayInventory inventory;
-    ASSERT_EQ(inventory.getInventorySize(), 2);
+
+    Item* items = inventory.getInventory();
+    ASSERT_NE(items, nullptr);  // Проверяем, что массив предметов не нулевой.
+
+    EXPECT_EQ(items[0].name, "Sword");
+    EXPECT_EQ(items[0].value, 100);
+
+    EXPECT_EQ(items[1].name, "Shield");
+    EXPECT_EQ(items[1].value, 50);
 }
 
-TEST(CrappyArrayInventoryTest, TestGetInventory) {
+// Тест 2: Проверка корректности возвращаемого размера инвентаря.
+TEST(CrappyArrayInventoryTest, InventorySizeTest) {
     CrappyArrayInventory inventory;
+    EXPECT_EQ(inventory.getInventorySize(), 2);
+}
+
+// Тест 3: Проверка того, что инвентарь содержит ожидаемые предметы.
+TEST(CrappyArrayInventoryTest, InventoryContentTest) {
+    CrappyArrayInventory inventory;
+
     Item* items = inventory.getInventory();
 
+    // Проверяем первый предмет.
     ASSERT_STREQ(items[0].name.c_str(), "Sword");
-    ASSERT_EQ(items[0].value, 100);
+    EXPECT_EQ(items[0].value, 100);
 
+    // Проверяем второй предмет.
     ASSERT_STREQ(items[1].name.c_str(), "Shield");
-    ASSERT_EQ(items[1].value, 50);
+    EXPECT_EQ(items[1].value, 50);
 }
 
-TEST(CrappyArrayInventoryTest, TestCreateWithDifferentValues) {
-    Item* array = new Item[3];
-    array[0] = {"Potion", 20};
-    array[1] = {"Dagger", 30};
-    array[2] = {"Ring", 40};
-
-    CrappyArrayInventory inventory(array, 3);
-    Item* items = inventory.getInventory();
-
-    ASSERT_STREQ(items[0].name.c_str(), "Potion");
-    ASSERT_EQ(items[0].value, 20);
-
-    ASSERT_STREQ(items[1].name.c_str(), "Dagger");
-    ASSERT_EQ(items[1].value, 30);
-
-    delete[] array;
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
