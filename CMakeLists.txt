@@ -11,32 +11,3 @@ set(SOURCE_FILES
 
 add_executable(BuilderDesignPattern ${SOURCE_FILES})
 target_include_directories(BuilderDesignPattern PUBLIC ${PROJECT_SOURCE_DIR})
-
-# Создаем библиотеку
-add_library(omegaladonLib ${LIB_SOURCE_FILES})
-target_include_directories(omegaladonLib PUBLIC include)
-
-# Добавляем Google Test с использованием FetchContent
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/release-1.11.0.zip
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-# Добавляем тестируемый исполняемый файл
-add_executable(omegaladon
-    tests/array_test.cpp
-)
-
-# Линкуем библиотеки Google Test
-target_link_libraries(omegaladon
-    PRIVATE
-    omegaladonLib
-    gtest
-    gtest_main
-)
-
-enable_testing()
-add_test(NAME omegaladon COMMAND omegaladon)
