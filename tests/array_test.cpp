@@ -21,20 +21,7 @@ TEST(CrappyArrayInventoryTest, InventorySizeTest) {
     EXPECT_EQ(inventory.getInventorySize(), 2);
 }
 
-// Тест 3: Проверка того, что инвентарь содержит ожидаемые предметы.
-// TEST(CrappyArrayInventoryTest, InventoryContentTest) {
-//     CrappyArrayInventory inventory;
-
-//     Item* items = inventory.getInventory();
-
-//     // Проверяем первый предмет.
-//     ASSERT_EQ(items[0].name, "Sword");
-//     EXPECT_EQ(items[0].value, 100);
-
-//     // Проверяем второй предмет.
-//     ASSERT_EQ(items[1].name, "Shield");
-//     EXPECT_EQ(items[1].value, 50);
-// }
+//tesr3
 TEST(CrappyArrayInventoryTest, FindItem) {
     CrappyArrayInventory inventory;
     Item* items = inventory.getInventory();
