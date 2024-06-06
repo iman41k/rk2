@@ -19,6 +19,14 @@ CrappyArrayInventory::CrappyArrayInventory()
     this->items = array;
 }
 
+void CrappyArrayInventory::addItem(const Item& item) {
+    if (inventorySize < MAX_INVENTORY_SIZE) {
+        inventory[inventorySize] = item;
+        inventorySize++;
+    } else {
+        // Обработка ситуации, когда инвентарь заполнен
+    }
+}
 Item* CrappyArrayInventory::getInventory()
 {
     return this->items;
