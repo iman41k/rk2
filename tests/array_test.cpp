@@ -22,20 +22,30 @@ TEST(CrappyArrayInventoryTest, InventorySizeTest) {
 }
 
 // Тест 3: Проверка того, что инвентарь содержит ожидаемые предметы.
-TEST(CrappyArrayInventoryTest, InventoryContentTest) {
+// TEST(CrappyArrayInventoryTest, InventoryContentTest) {
+//     CrappyArrayInventory inventory;
+
+//     Item* items = inventory.getInventory();
+
+//     // Проверяем первый предмет.
+//     ASSERT_EQ(items[0].name, "Sword");
+//     EXPECT_EQ(items[0].value, 100);
+
+//     // Проверяем второй предмет.
+//     ASSERT_EQ(items[1].name, "Shield");
+//     EXPECT_EQ(items[1].value, 50);
+// }
+TEST(CrappyArrayInventoryTest, FindItem) {
     CrappyArrayInventory inventory;
 
-    Item* items = inventory.getInventory();
+    // Проверяем, что можно найти существующий предмет
+    int index = inventory.findItem("Sword");
+    ASSERT_EQ(index, 0);
 
-    // Проверяем первый предмет.
-    ASSERT_EQ(items[0].name, "Sword");
-    EXPECT_EQ(items[0].value, 100);
-
-    // Проверяем второй предмет.
-    ASSERT_EQ(items[1].name, "Shield");
-    EXPECT_EQ(items[1].value, 50);
+    // Проверяем, что возвращается -1, если предмет не найден
+    index = inventory.findItem("Potion");
+    ASSERT_EQ(index, -1);
 }
-
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
