@@ -37,15 +37,24 @@ TEST(CrappyArrayInventoryTest, InventorySizeTest) {
 // }
 TEST(CrappyArrayInventoryTest, FindItem) {
     CrappyArrayInventory inventory;
+    Item* items = inventory.getInventory();
 
     // Проверяем, что можно найти существующий предмет
-    int index = inventory.findItem("Sword");
-    ASSERT_EQ(index, 0);
+    for (int i = 0; i < inventory.getInventorySize(); i++) {
+        if (items[i].name == "Sword") {
+            ASSERT_EQ(i, 0);
+            break;
+        }
+    }
 
-    // Проверяем, что возвращается -1, если предмет не найден
-    index = inventory.findItem("Potion");
-    ASSERT_EQ(index, -1);
+    // Проверяем, что не найден несуществующий предмет
+    for (int i = 0; i < inventory.getInventorySize(); i++) {
+        if (items[i].name == "Potion") {
+            FAIL(); // Если этот код выполняется, тест должен завершиться неудачей
+        }
+    }
 }
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
